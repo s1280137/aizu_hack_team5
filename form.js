@@ -8,7 +8,7 @@ sendButton.addEventListener("click", () => {
         .then(j => {
             titles = j
 
-            const titleText = textasdfInput.value
+            const titleText = textInput.value
             const task = {
                 text: titleText
             }
