@@ -4,17 +4,18 @@ body {
 
 .header {
     height: 50px;
-    width:100vw;
+    width: 100vw;
     background: rgb(233, 128, 236);
     position: fixed;
     top: 0;
 }
 
-div.header-text {
+.header-text {
     color: aliceblue;
-    font-size:larger;
+    font-size: x-large;
     width: 100vw;
-    text-align: center;
+    text-align: left;
+    margin-left: 32px;
     position: fixed;
     top: 10px;
 }
@@ -33,11 +34,56 @@ div.header-text {
     margin-bottom: 250px;
 }
 
+.div_button_center {
+    text-align: center;
+}
+
 .post_button {
     color: rgb(255, 254, 254);
     background-color: rgb(118, 223, 176);
-    height: 100px;
+    height: 96px;
     border: 3px solid green;
-    width:400px;
-    font-size:larger;
+    width: 321px;
+    font-size: larger;
+}
+
+.taskContainer {
+    text-align: center;
+    margin: 16px;
+}
+
+.div_tasks_center {
+    margin: 32px;
+    text-align: center;
+    width: 50wn;
+}
+
+.imgP {
+    border-radius: 16px;
+    margin: 32px;
+}
+
+.flexer {
+    background-color: rgba(148, 148, 148, 0.24);
+    margin: 64px;
+    text-align: center;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 32px;
+}
+
+.titleP {
+    font-size: xx-large;
+    color:rgb(66, 66, 66);
+}
+
+.likeP {
+    font-size: x-large;
+    color:rgb(233, 128, 236);
+}
+
+.dislikeP {
+    font-size: x-large;
+    color:rgb(106, 95, 255);
 }

@@ -2,6 +2,7 @@ const taskListContainer = document.getElementById("tasks")
 let tasks = []
 
 function update() {
+
   while (taskListContainer.firstChild !== null) {
     taskListContainer.removeChild(taskListContainer.firstChild)
   }
@@ -25,19 +26,36 @@ function update() {
         const taskContainer = document.createElement("div")
         taskContainer.className = "taskContainer"
 
-        const taskP = document.createElement("p")
-        const commentP = document.createElement("p")
-        const likeP = document.createElement("p")
-        const dislikeP = document.createElement("p")
-        const img = document.createElement("img")
+        const flexer = document.createElement("div")
+        flexer.className = "flexer"
 
+        const picture = document.createElement("div")
+        picture.className = "picture"
+
+        const other = document.createElement("div")
+        other.className = "other"
+
+
+        const taskP = document.createElement("p")
+        taskP.className = "titleP"
+        const commentP = document.createElement("p")
+        commentP.className = "commentP"
+        const likeP = document.createElement("p")
+        likeP.className = "likeP"
+        const dislikeP = document.createElement("p")
+        dislikeP.className = "dislikeP"
+
+        const img = document.createElement("img")
+        img.className = "imgP"
+
+        // タグ設定
         taskP.textContent = task.title
-        commentP.textContent = task.comment
-        likeP.textContent = task.like + " likes"
-        dislikeP.textContent = task.dislike + " dislikes"
+        commentP.textContent = "コメント:" + task.comment
+        likeP.textContent = task.like + " zuzu"
+        dislikeP.textContent = task.dislike + " だめかも"
         taskContainer.id = task.id
         img.src = task.img
-        img.width = 600
+        img.width = 216
 
         const likeButton = document.createElement("input")
         likeButton.type = "button"
@@ -52,8 +70,8 @@ function update() {
         likeButton.addEventListener("click", () => {
           // いいねのしょり
           fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/latest", {
-              method: "GET"
-            })
+            method: "GET"
+          })
             .then(r => r.json())
             .then((data) => {
               for (let j = 0; j < data.length; j++) {
@@ -63,12 +81,12 @@ function update() {
               }
 
               fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/", {
-                  method: "PUT",
-                  headers: {
-                    "content-type": "application/json"
-                  },
-                  body: JSON.stringify(data)
-                })
+                method: "PUT",
+                headers: {
+                  "content-type": "application/json"
+                },
+                body: JSON.stringify(data)
+              })
                 .then(() => {
                   update()
                 })
@@ -80,8 +98,8 @@ function update() {
         dislikeButton.addEventListener("click", () => {
           // 悪いねのしょり
           fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/latest", {
-              method: "GET"
-            })
+            method: "GET"
+          })
             .then(r => r.json())
             .then((data) => {
               for (let j = 0; j < data.length; j++) {
@@ -93,25 +111,28 @@ function update() {
               console.log(data);
 
               fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/", {
-                  method: "PUT",
-                  headers: {
-                    "content-type": "application/json"
-                  },
-                  body: JSON.stringify(data)
-                })
+                method: "PUT",
+                headers: {
+                  "content-type": "application/json"
+                },
+                body: JSON.stringify(data)
+              })
                 .then(() => {
                   update()
                 })
             })
         })
-        taskContainer.appendChild(taskP)
-        taskContainer.appendChild(commentP)
-        taskContainer.appendChild(likeP)
-        taskContainer.appendChild(dislikeP)
-        taskContainer.appendChild(img)
-        taskContainer.appendChild(likeButton)
-        taskContainer.appendChild(dislikeButton)
-        taskListContainer.appendChild(taskContainer)
+        other.appendChild(taskP)
+        other.appendChild(commentP)
+        other.appendChild(likeP)
+        other.appendChild(likeButton)
+        other.appendChild(dislikeP)
+        other.appendChild(dislikeButton)
+        picture.appendChild(img)
+
+        flexer.appendChild(picture)
+        flexer.appendChild(other)
+        taskListContainer.appendChild(flexer)
       }
     })
 }

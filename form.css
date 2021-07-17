@@ -1,24 +1,24 @@
 .header {
     height: 40px;
-    width: 60%;
+    width: 100vw;
     background: rgb(243, 131, 245);
     position: fixed;
     top: 0;
-    margin-left:20%;
 }
 
 body{
   margin:0;
 }
 
-div.header-text {
-    color: aliceblue;
-    font-size:larger;
-    position: fixed;
-    top: 10px;
-    text-align: center;
-    width: 60%;
-  }
+.header-text {
+  color: aliceblue;
+  font-size: x-large;
+  width: 100vw;
+  text-align: left;
+  margin-left: 32px;
+  position: fixed;
+  top: 3px;
+}
 
 .entryform-element{
   text-align: center;

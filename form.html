@@ -1,42 +1,46 @@
 <html>
+
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="form.css">
   <title>ZUZU</title>
 </head>
+
 <header>
   <div class="header">
     <div class="header-text">投稿フォーム</div>
   </div>
 </header>
-<body>
-  <form class="entryform">
+
+<div>
+  <div class="entryform">
     <div class="entryform-element">
-      <label for="name">タイトル</label><br/>
-        <input type="text" id="name" name="name">
+      <label for="name">タイトル</label><br />
+      <input type="text" id="title" name="name">
     </div>
     <div class="entryform-element">
-        <label for="picture">添付画像</label><br/>
-          <textarea id="picture" name="picture"></textarea>
+      <label for="picture">添付画像</label><br />
+      <textarea id="picture" name="picture"></textarea>
     </div>
     <div class="entryform-element">
-      <label for="picture">コメント</label><br/>
-        <textarea id="picture" name="picture"></textarea>
-  </div>
+      <label for="picture">コメント</label><br />
+      <textarea id="comment" name="picture"></textarea>
+    </div>
     <table>
-    <tr>
-      <td class="entryform-back">
-        <a href="index.html">
-          <input class="post_button" id="post_button" type="submit" value="戻る">
-        </a>
-      </td>
-      <td class="entryform-sent">
-        <a href="index.html">
-          <input class="post_button" id="post_button" type="submit" value="送信">
-        </a>
-      </td>
-    </tr>
+      <tr>
+        <td class="entryform-back">
+          <a href="index.html">
+            <input class="back" id="back" type="submit" value="戻る">
+          </a>
+        </td>
+        <td class="entryform-sent">
+            <input class="post_button" id="post_button" type="submit" value="送信">
+        </td>
+      </tr>
     </table>
-  </form>
-</body>
+  </div>
+</div>
+
+<script type="text/javascript" src="form.js"></script>
+
 </html>
