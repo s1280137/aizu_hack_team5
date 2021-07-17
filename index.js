@@ -9,6 +9,15 @@ function update() {
     .then(r => r.json())
     .then(j => {
       tasks = j
+
+      tasks.sort(function (a, b) {
+        if (a.like < b.like) {
+          return 1;
+        } else {
+          return -1;
+        }
+      })
+
       for (let i = 0; i < tasks.length; i++) {
 
         const task = tasks[i]
@@ -28,8 +37,7 @@ function update() {
         dislikeP.textContent = task.dislike + " dislikes"
         taskContainer.id = task.id
         img.src = task.img
-        img.width = 200
-        img.height = 200
+        img.width = 600
 
         const likeButton = document.createElement("input")
         likeButton.type = "button"
@@ -55,15 +63,15 @@ function update() {
               }
 
               fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/", {
-                method: "PUT",
-                headers: {
-                  "content-type": "application/json"
-                },
-                body: JSON.stringify(data)
-              })
-              .then(() => {
-                update()
-              })
+                  method: "PUT",
+                  headers: {
+                    "content-type": "application/json"
+                  },
+                  body: JSON.stringify(data)
+                })
+                .then(() => {
+                  update()
+                })
 
             })
         })
@@ -85,16 +93,15 @@ function update() {
               console.log(data);
 
               fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/", {
-                method: "PUT",
-                headers: {
-                  "content-type": "application/json"
-                },
-                body: JSON.stringify(data)
-              })
-              .then(() => {
-                update()
-              })
-
+                  method: "PUT",
+                  headers: {
+                    "content-type": "application/json"
+                  },
+                  body: JSON.stringify(data)
+                })
+                .then(() => {
+                  update()
+                })
             })
         })
         taskContainer.appendChild(taskP)
