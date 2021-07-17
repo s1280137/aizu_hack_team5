@@ -4,7 +4,6 @@ body {
 
 .header {
     height: 50px;
-    width: 100vw;
     background: rgb(233, 128, 236);
     position: fixed;
     top: 0;
