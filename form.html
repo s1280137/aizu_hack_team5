@@ -1,32 +1,42 @@
 <html>
-
 <head>
   <meta charset="UTF-8">
   <link rel="stylesheet" href="form.css">
   <title>ZUZU</title>
 </head>
-
-　<div class="App">
-  　　<div class="header">
-    <div class="header-text">登録フォーム</div>
-    　
+<header>
+  <div class="header">
+    <div class="header-text">投稿フォーム</div>
   </div>
-
-  <body>
-    <form method="POST" class="entryform">
-      <div class="entryform-element">
-        <label for="name">ユーザーネーム</label><span class="tag">必須</span><br>
+</header>
+<body>
+  <form class="entryform">
+    <div class="entryform-element">
+      <label for="name">タイトル</label><br/>
         <input type="text" id="name" name="name">
-      </div>
-      <div class="entryform-element">
-        <label for="picture">添付画像</label><span class="tag">必須</span><br>
+    </div>
+    <div class="entryform-element">
+        <label for="picture">添付画像</label><br/>
+          <textarea id="picture" name="picture"></textarea>
+    </div>
+    <div class="entryform-element">
+      <label for="picture">コメント</label><br/>
         <textarea id="picture" name="picture"></textarea>
-      </div>
-      <div class="entryform-element">
-        <a href="index.html">戻る</a>
-      </div>
-    </form>
-  </body>
-</div>
-
+  </div>
+    <table>
+    <tr>
+      <td class="entryform-back">
+        <a href="index.html">
+          <input class="post_button" id="post_button" type="submit" value="戻る">
+        </a>
+      </td>
+      <td class="entryform-sent">
+        <a href="index.html">
+          <input class="post_button" id="post_button" type="submit" value="送信">
+        </a>
+      </td>
+    </tr>
+    </table>
+  </form>
+</body>
 </html>
