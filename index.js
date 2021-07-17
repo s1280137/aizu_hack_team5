@@ -28,8 +28,7 @@ function update() {
         dislikeP.textContent = task.dislike + " dislikes"
         taskContainer.id = task.id
         img.src = task.img
-        img.width = 200
-        img.height = 200
+        img.width = 600
 
         const likeButton = document.createElement("input")
         likeButton.type = "button"
