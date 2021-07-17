@@ -54,8 +54,6 @@ function update() {
                 }
               }
 
-              console.log(data);
-
               fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/", {
                 method: "PUT",
                 headers: {
