@@ -5,7 +5,7 @@ const commentInput = document.getElementById("comment")
 
 sendButton.addEventListener("click", () => {
     // 送信の処理
-    fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/latest", {
+    fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest", {
         method: "GET"
     })
         .then(r => r.json())
@@ -29,7 +29,7 @@ sendButton.addEventListener("click", () => {
             }
             titles.push(task)
 
-            fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1", {
+            fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2", {
                 method: "PUT",
                 headers: {
                     "content-type": "application/json"
