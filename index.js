@@ -6,7 +6,7 @@ function update() {
   while (taskListContainer.firstChild !== null) {
     taskListContainer.removeChild(taskListContainer.firstChild)
   }
-  fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/latest")
+  fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest")
     .then(r => r.json())
     .then(j => {
       tasks = j
@@ -40,9 +40,9 @@ function update() {
         taskP.className = "titleP"
         const commentP = document.createElement("p")
         commentP.className = "commentP"
-        let likeP = document.createElement("p")
+        const likeP = document.createElement("p")
         likeP.className = "likeP"
-        let dislikeP = document.createElement("p")
+        const dislikeP = document.createElement("p")
         dislikeP.className = "dislikeP"
 
         const img = document.createElement("img")
@@ -69,7 +69,7 @@ function update() {
 
         likeButton.addEventListener("click", () => {
           // いいねの処理
-          fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/latest", {
+          fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest", {
             method: "GET"
           })
             .then(r => r.json())
@@ -81,7 +81,7 @@ function update() {
                 }
               }
 
-              fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/", {
+              fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/", {
                 method: "PUT",
                 headers: {
                   "content-type": "application/json"
@@ -98,7 +98,7 @@ function update() {
 
         dislikeButton.addEventListener("click", () => {
           // ダメかも...の処理
-          fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/latest", {
+          fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest", {
             method: "GET"
           })
             .then(r => r.json())
@@ -112,7 +112,7 @@ function update() {
 
               console.log(data);
 
-              fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/", {
+              fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/", {
                 method: "PUT",
                 headers: {
                   "content-type": "application/json"
