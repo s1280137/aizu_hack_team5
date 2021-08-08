@@ -4,6 +4,9 @@ const pictureInput = document.getElementById("picture")
 const commentInput = document.getElementById("comment")
 
 sendButton.addEventListener("click", () => {
+
+    console.log("clicked")
+
     // 送信の処理
     fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest", {
         method: "GET"
@@ -36,9 +39,9 @@ sendButton.addEventListener("click", () => {
                 },
                 body: JSON.stringify(titles)
             })
-            textInput.value = ""
-            pictureInput.value = ""
-            commentInput.value = ""
+                .then((_) => {
+                    location.href = 'index.html'
+                })
 
         })
 })
