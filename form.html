@@ -26,18 +26,10 @@
       <label for="picture">コメント</label><br />
       <textarea id="comment" name="picture"></textarea>
     </div>
-    <table>
-      <tr>
-        <td class="entryform-back">
-          <a href="index.html">
-            <input class="back" id="back" type="submit" value="戻る">
-          </a>
-        </td>
-        <td class="entryform-sent">
-            <input class="post_button" id="post_button" type="submit" value="送信">
-        </td>
-      </tr>
-    </table>
+    <div class="btn-wrapper">
+      <button type="button" class="btn btn_prymary btn_back" value="戻る" onclick="location.href='index.html'">戻る</button>
+        <button type="submit" class="btn btn-primary btn_sent" value="送信" onclick="location.href='index.html'">送信</button>
+    </div>
   </div>
 </div>
 

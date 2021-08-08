@@ -52,7 +52,7 @@ function update() {
         taskP.textContent = task.title
         commentP.textContent = "コメント:" + task.comment
         likeP.textContent = task.like + " zuzu"
-        dislikeP.textContent = task.dislike + " だめかも"
+        dislikeP.textContent = task.dislike + " ダメかも"
         taskContainer.id = task.id
         img.src = task.img
         img.width = 216
@@ -68,7 +68,7 @@ function update() {
 
 
         likeButton.addEventListener("click", () => {
-          // いいねのしょり
+          // いいねの処理
           fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest", {
             method: "GET"
           })
@@ -77,6 +77,7 @@ function update() {
               for (let j = 0; j < data.length; j++) {
                 if (data[j].id === task.id) {
                   data[j].like++
+                  likeP.textContent = data[j].like + " zuzu"
                 }
               }
 
@@ -87,16 +88,16 @@ function update() {
                 },
                 body: JSON.stringify(data)
               })
-                .then(() => {
-                  update()
-                })
+                // .then(() => {
+                //   update()
+                // })
 
             })
         })
 
 
         dislikeButton.addEventListener("click", () => {
-          // 悪いねのしょり
+          // ダメかも...の処理
           fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest", {
             method: "GET"
           })
@@ -105,6 +106,7 @@ function update() {
               for (let j = 0; j < data.length; j++) {
                 if (data[j].id === task.id) {
                   data[j].dislike++
+                  dislikeP.textContent = data[j].dislike + " ダメかも"
                 }
               }
 
@@ -117,9 +119,9 @@ function update() {
                 },
                 body: JSON.stringify(data)
               })
-                .then(() => {
-                  update()
-                })
+                // .then(() => {
+                //   update()
+                // })
             })
         })
         other.appendChild(taskP)
