@@ -18,12 +18,12 @@ sendButton.addEventListener("click", () => {
             console.log(j)
             let titles = j
             let bigID = -99999
-            let flag = 0
+            let flag = 0 //未選択
 
             if(male.checked){
-                flag = 1
+                flag = 1 //男
             }else if(female.checked){
-                flag = 2
+                flag = 2 //女
             }
             
             titles.forEach(d => {

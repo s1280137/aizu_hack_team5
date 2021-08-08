@@ -65,6 +65,22 @@ function update() {
         dislikeButton.type = "button"
         dislikeButton.value = "ダメかも..."
 
+        const hoge1 = document.getElementById('gender-all')
+        const hoge2 = document.getElementById('gender-man')
+        const hoge3 = document.getElementById('gender-woman')
+
+        hoge1.addEventListener("click", () => {
+            document.getElementById('gender-man').style.display = "";
+            document.getElementById('gender-woman').style.display = "";
+        })
+        hoge2.addEventListener("click", () => {
+            document.getElementById('gender-man').style.display = "";
+            document.getElementById('gender-woman').style.display = "none";
+        })
+        hoge3.addEventListener("click", () => {
+            document.getElementById('gender-man').style.display = "none";
+            document.getElementById('gender-woman').style.display = "";
+        })
 
 
         likeButton.addEventListener("click", () => {
