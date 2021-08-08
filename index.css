@@ -36,6 +36,7 @@ body {
 
 .div_button_center {
     text-align: center;
+    margin-top: 3%;
 }
 
 .post_button {
@@ -86,4 +87,10 @@ body {
 .dislikeP {
     font-size: x-large;
     color:rgb(106, 95, 255);
+}
+
+.button-gender{
+    text-align: center;
+    margin-top: 3%;
+    size: 20;
 }
