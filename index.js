@@ -6,7 +6,7 @@ function update() {
   while (taskListContainer.firstChild !== null) {
     taskListContainer.removeChild(taskListContainer.firstChild)
   }
-  fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/latest")
+  fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest")
     .then(r => r.json())
     .then(j => {
       tasks = j
@@ -69,7 +69,7 @@ function update() {
 
         likeButton.addEventListener("click", () => {
           // いいねのしょり
-          fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/latest", {
+          fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest", {
             method: "GET"
           })
             .then(r => r.json())
@@ -80,7 +80,7 @@ function update() {
                 }
               }
 
-              fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/", {
+              fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/", {
                 method: "PUT",
                 headers: {
                   "content-type": "application/json"
@@ -97,7 +97,7 @@ function update() {
 
         dislikeButton.addEventListener("click", () => {
           // 悪いねのしょり
-          fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/latest", {
+          fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest", {
             method: "GET"
           })
             .then(r => r.json())
@@ -110,7 +110,7 @@ function update() {
 
               console.log(data);
 
-              fetch("https://api.jsonbin.io/b/60f25118a917050205c940d1/", {
+              fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/", {
                 method: "PUT",
                 headers: {
                   "content-type": "application/json"
