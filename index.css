@@ -44,8 +44,8 @@ body {
     background-color: rgb(118, 223, 176);
     height: 96px;
     border: 3px solid green;
-    width: 321px;
-    font-size: larger;
+    width: 700px;
+    font-size: xx-large;
 }
 
 .taskContainer {
@@ -92,5 +92,25 @@ body {
 .button-gender{
     text-align: center;
     margin-top: 3%;
-    size: 20;
+}
+
+#gender-all{
+    width:300px;
+    border-radius: 100vh;
+    font-size: large; 
+    padding:5px;
+}
+
+#gender-man{
+    width:300px;
+    border-radius: 100vh;
+    font-size: large;
+    padding:5px;
+}
+
+#gender-woman{
+    width:300px;
+    border-radius: 100vh;
+    font-size: large;
+    padding:5px;
 }
