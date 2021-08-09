@@ -1,17 +1,45 @@
 const taskListContainer = document.getElementById("tasks")
-let tasks = []
 
-function update() {
+const hoge1 = document.getElementById('gender-all')
+const hoge2 = document.getElementById('gender-man')
+const hoge3 = document.getElementById('gender-woman')
 
-  while (taskListContainer.firstChild !== null) {
-    taskListContainer.removeChild(taskListContainer.firstChild)
-  }
-  fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest")
+hoge1.addEventListener("click", () => {
+  update(0)
+})
+hoge2.addEventListener("click", () => {
+  // document.getElementById('gender-man').style.display = "";
+  // document.getElementById('gender-woman').style.display = "none";
+  // if(taskListContainer.flexer.other.genderP.textContent === 1){
+  //   taskListContainer.style.display = "";
+  // }else{
+  //   taskListContainer.style.display = "none";
+
+  update(1)
+})
+hoge3.addEventListener("click", () => {
+  // document.getElementById('gender-man').style.display = "none";
+  // document.getElementById('gender-woman').style.display = "";
+  // if(taskListContainer.flexer.other.genderP.textContent === 2){
+  //   taskListContainer.style.display = "none";
+  // }else{
+  //   taskListContainer.style.display = "";
+  // }
+  update(2)
+})
+
+function update(gender) {
+
+  let tasks = []
+
+  taskListContainer.innerHTML = "";
+
+  fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/latest")
     .then(r => r.json())
     .then(j => {
       tasks = j
 
-      tasks.sort(function (a, b) {
+      tasks = tasks.sort(function (a, b) {
         if (a.like < b.like) {
           return 1;
         } else {
@@ -19,9 +47,29 @@ function update() {
         }
       })
 
+      if (gender === 1) {
+        //男だけをtasksからとってくる
+        tasks = tasks.filter(tasks => tasks.gender === 1)
+      } else if (gender === 2) {
+        //男だけをtasksからとってくる
+        tasks = tasks.filter(tasks => tasks.gender === 2)
+      }
+
+      console.log(tasks.length);
+
       for (let i = 0; i < tasks.length; i++) {
 
         const task = tasks[i]
+
+        /////////////////////////////////////////////////////////////
+
+        const likeButton = document.createElement("input")
+        likeButton.type = "button"
+        likeButton.value = "ZUZU!"
+
+        const dislikeButton = document.createElement("input")
+        dislikeButton.type = "button"
+        dislikeButton.value = "ダメかも..."
 
         const taskContainer = document.createElement("div")
         taskContainer.className = "taskContainer"
@@ -44,32 +92,28 @@ function update() {
         likeP.className = "likeP"
         const dislikeP = document.createElement("p")
         dislikeP.className = "dislikeP"
+        const genderP = document.createElement("p")
+        genderP.className = "genderP"
 
         const img = document.createElement("img")
         img.className = "imgP"
+
+        /////////////////////////////////////////////////////////////
 
         // タグ設定
         taskP.textContent = task.title
         commentP.textContent = "コメント:" + task.comment
         likeP.textContent = task.like + " zuzu"
         dislikeP.textContent = task.dislike + " ダメかも"
+        genderP.textContent = task.gender == 0 ? "無性" : task.gender == 1 ? "男性" : "女性"
         taskContainer.id = task.id
         img.src = task.img
         img.width = 216
 
-        const likeButton = document.createElement("input")
-        likeButton.type = "button"
-        likeButton.value = "ZUZU!"
-
-        const dislikeButton = document.createElement("input")
-        dislikeButton.type = "button"
-        dislikeButton.value = "ダメかも..."
-
-
 
         likeButton.addEventListener("click", () => {
           // いいねの処理
-          fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest", {
+          fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/latest", {
             method: "GET"
           })
             .then(r => r.json())
@@ -81,16 +125,16 @@ function update() {
                 }
               }
 
-              fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/", {
+              fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/", {
                 method: "PUT",
                 headers: {
                   "content-type": "application/json"
                 },
                 body: JSON.stringify(data)
               })
-                // .then(() => {
-                //   update()
-                // })
+              // .then(() => {
+              //   update()
+              // })
 
             })
         })
@@ -98,7 +142,7 @@ function update() {
 
         dislikeButton.addEventListener("click", () => {
           // ダメかも...の処理
-          fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest", {
+          fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/latest", {
             method: "GET"
           })
             .then(r => r.json())
@@ -112,16 +156,16 @@ function update() {
 
               console.log(data);
 
-              fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/", {
+              fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/", {
                 method: "PUT",
                 headers: {
                   "content-type": "application/json"
                 },
                 body: JSON.stringify(data)
               })
-                // .then(() => {
-                //   update()
-                // })
+              // .then(() => {
+              //   update()
+              // })
             })
         })
         other.appendChild(taskP)
@@ -130,6 +174,7 @@ function update() {
         other.appendChild(likeButton)
         other.appendChild(dislikeP)
         other.appendChild(dislikeButton)
+        other.appendChild(genderP)
         picture.appendChild(img)
 
         flexer.appendChild(picture)

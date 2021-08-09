@@ -10,7 +10,7 @@ sendButton.addEventListener("click", () => {
     console.log("clicked")
 
     // 送信の処理
-    fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest", {
+    fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/latest", {
         method: "GET"
     })
         .then(r => r.json())
@@ -18,12 +18,12 @@ sendButton.addEventListener("click", () => {
             console.log(j)
             let titles = j
             let bigID = -99999
-            let flag = 0
+            let flag = 0 //未選択
 
             if(male.checked){
-                flag = 1
+                flag = 1 //男
             }else if(female.checked){
-                flag = 2
+                flag = 2 //女
             }
             
             titles.forEach(d => {
@@ -42,7 +42,7 @@ sendButton.addEventListener("click", () => {
             }
             titles.push(task)
 
-            fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2", {
+            fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f", {
                 method: "PUT",
                 headers: {
                     "content-type": "application/json"
