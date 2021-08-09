@@ -8,23 +8,9 @@ hoge1.addEventListener("click", () => {
   update(0)
 })
 hoge2.addEventListener("click", () => {
-  // document.getElementById('gender-man').style.display = "";
-  // document.getElementById('gender-woman').style.display = "none";
-  // if(taskListContainer.flexer.other.genderP.textContent === 1){
-  //   taskListContainer.style.display = "";
-  // }else{
-  //   taskListContainer.style.display = "none";
-
   update(1)
 })
 hoge3.addEventListener("click", () => {
-  // document.getElementById('gender-man').style.display = "none";
-  // document.getElementById('gender-woman').style.display = "";
-  // if(taskListContainer.flexer.other.genderP.textContent === 2){
-  //   taskListContainer.style.display = "none";
-  // }else{
-  //   taskListContainer.style.display = "";
-  // }
   update(2)
 })
 
@@ -51,7 +37,7 @@ function update(gender) {
         //男だけをtasksからとってくる
         tasks = tasks.filter(tasks => tasks.gender === 1)
       } else if (gender === 2) {
-        //男だけをtasksからとってくる
+        //女だけをtasksからとってくる
         tasks = tasks.filter(tasks => tasks.gender === 2)
       }
 
@@ -60,8 +46,6 @@ function update(gender) {
       for (let i = 0; i < tasks.length; i++) {
 
         const task = tasks[i]
-
-        /////////////////////////////////////////////////////////////
 
         const likeButton = document.createElement("input")
         likeButton.type = "button"
@@ -98,8 +82,6 @@ function update(gender) {
         const img = document.createElement("img")
         img.className = "imgP"
 
-        /////////////////////////////////////////////////////////////
-
         // タグ設定
         taskP.textContent = task.title
         commentP.textContent = "コメント:" + task.comment
@@ -132,10 +114,6 @@ function update(gender) {
                 },
                 body: JSON.stringify(data)
               })
-              // .then(() => {
-              //   update()
-              // })
-
             })
         })
 
@@ -163,9 +141,6 @@ function update(gender) {
                 },
                 body: JSON.stringify(data)
               })
-              // .then(() => {
-              //   update()
-              // })
             })
         })
         other.appendChild(taskP)
