@@ -5,14 +5,29 @@ const hoge2 = document.getElementById('gender-man')
 const hoge3 = document.getElementById('gender-woman')
 
 hoge1.addEventListener("click", () => {
-  update(0)
+  fake_update(0)
 })
 hoge2.addEventListener("click", () => {
-  update(1)
+  fake_update(1)
 })
 hoge3.addEventListener("click", () => {
-  update(2)
+  fake_update(2)
 })
+
+function fake_update(gender) {
+  while (taskListContainer.firstChild !== null) {
+    taskListContainer.removeChild(taskListContainer.firstChild)
+  }
+
+  // loading print
+
+  const loading = document.createElement("div")
+  loading.textContent = "読み込んでいます..."
+
+  taskListContainer.appendChild(loading)
+
+  setTimeout(() => { update(gender) }, 1500) // 3秒待つ
+}
 
 function update(gender) {
 
@@ -40,8 +55,6 @@ function update(gender) {
         //女だけをtasksからとってくる
         tasks = tasks.filter(tasks => tasks.gender === 2)
       }
-
-      console.log(tasks.length);
 
       for (let i = 0; i < tasks.length; i++) {
 
@@ -95,53 +108,65 @@ function update(gender) {
 
         likeButton.addEventListener("click", () => {
           // いいねの処理
-          fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/latest", {
-            method: "GET"
-          })
-            .then(r => r.json())
-            .then((data) => {
-              for (let j = 0; j < data.length; j++) {
-                if (data[j].id === task.id) {
-                  data[j].like++
-                  likeP.textContent = data[j].like + " zuzu"
-                }
-              }
 
-              fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/", {
-                method: "PUT",
-                headers: {
-                  "content-type": "application/json"
-                },
-                body: JSON.stringify(data)
-              })
+          likeButton.disabled = true
+          setTimeout(() => {
+            likeButton.disabled = false
+            fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/latest", {
+              method: "GET"
             })
+              .then(r => r.json())
+              .then((data) => {
+                for (let j = 0; j < data.length; j++) {
+                  if (data[j].id === task.id) {
+                    data[j].like++
+                    likeP.textContent = data[j].like + " zuzu"
+                  }
+                }
+
+                fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/", {
+                  method: "PUT",
+                  headers: {
+                    "content-type": "application/json"
+                  },
+                  body: JSON.stringify(data)
+                })
+              })
+          }, 1000) // 3秒待つ
+
+
         })
 
 
         dislikeButton.addEventListener("click", () => {
           // ダメかも...の処理
-          fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/latest", {
-            method: "GET"
-          })
-            .then(r => r.json())
-            .then((data) => {
-              for (let j = 0; j < data.length; j++) {
-                if (data[j].id === task.id) {
-                  data[j].dislike++
-                  dislikeP.textContent = data[j].dislike + " ダメかも"
-                }
-              }
-
-              console.log(data);
-
-              fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/", {
-                method: "PUT",
-                headers: {
-                  "content-type": "application/json"
-                },
-                body: JSON.stringify(data)
-              })
+          dislikeButton.disabled = true
+          setTimeout(() => {
+            dislikeButton.disabled = false
+            fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/latest", {
+              method: "GET"
             })
+              .then(r => r.json())
+              .then((data) => {
+                for (let j = 0; j < data.length; j++) {
+                  if (data[j].id === task.id) {
+                    data[j].dislike++
+                    dislikeP.textContent = data[j].dislike + " ダメかも"
+                  }
+                }
+
+                console.log(data);
+
+                fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/", {
+                  method: "PUT",
+                  headers: {
+                    "content-type": "application/json"
+                  },
+                  body: JSON.stringify(data)
+                })
+              })
+          }, 1000) // 3秒待つ
+
         })
         other.appendChild(taskP)
         other.appendChild(commentP)
@@ -158,4 +183,4 @@ function update(gender) {
       }
     })
 }
-update()
+fake_update(0)
