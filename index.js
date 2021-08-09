@@ -1,7 +1,7 @@
 const taskListContainer = document.getElementById("tasks")
 let tasks = []
 
-function update() {
+function update(gender) {
 
   while (taskListContainer.firstChild !== null) {
     taskListContainer.removeChild(taskListContainer.firstChild)
@@ -19,6 +19,10 @@ function update() {
         }
       })
 
+      if(gender === 1){
+        //男だけをtasksからとってくる
+        tasks = tasks.filter(tasks => tasks.gender === 1)
+      }
       for (let i = 0; i < tasks.length; i++) {
 
         const task = tasks[i]
@@ -44,6 +48,8 @@ function update() {
         likeP.className = "likeP"
         const dislikeP = document.createElement("p")
         dislikeP.className = "dislikeP"
+        const genderP = document.createElement("p")
+        genderP.className = "genderP"
 
         const img = document.createElement("img")
         img.className = "imgP"
@@ -53,6 +59,7 @@ function update() {
         commentP.textContent = "コメント:" + task.comment
         likeP.textContent = task.like + " zuzu"
         dislikeP.textContent = task.dislike + " ダメかも"
+        genderP.textContent = task.gender
         taskContainer.id = task.id
         img.src = task.img
         img.width = 216
@@ -70,16 +77,28 @@ function update() {
         const hoge3 = document.getElementById('gender-woman')
 
         hoge1.addEventListener("click", () => {
-            document.getElementById('gender-man').style.display = "";
-            document.getElementById('gender-woman').style.display = "";
+            // document.getElementById('gender-man').style.display = "";
+            // document.getElementById('gender-woman').style.display = "";
+            update(0)
         })
         hoge2.addEventListener("click", () => {
-            document.getElementById('gender-man').style.display = "";
-            document.getElementById('gender-woman').style.display = "none";
+            // document.getElementById('gender-man').style.display = "";
+            // document.getElementById('gender-woman').style.display = "none";
+            // if(taskListContainer.flexer.other.genderP.textContent === 1){
+            //   taskListContainer.style.display = "";
+            // }else{
+            //   taskListContainer.style.display = "none";
+            update(1)
         })
         hoge3.addEventListener("click", () => {
-            document.getElementById('gender-man').style.display = "none";
-            document.getElementById('gender-woman').style.display = "";
+            // document.getElementById('gender-man').style.display = "none";
+            // document.getElementById('gender-woman').style.display = "";
+            // if(taskListContainer.flexer.other.genderP.textContent === 2){
+            //   taskListContainer.style.display = "none";
+            // }else{
+            //   taskListContainer.style.display = "";
+            // }
+            update(2)
         })
 
 
@@ -146,6 +165,7 @@ function update() {
         other.appendChild(likeButton)
         other.appendChild(dislikeP)
         other.appendChild(dislikeButton)
+        other.appendChild(genderP)
         picture.appendChild(img)
 
         flexer.appendChild(picture)
