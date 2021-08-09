@@ -10,7 +10,7 @@ sendButton.addEventListener("click", () => {
     console.log("clicked")
 
     // 送信の処理
-    fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2/latest", {
+    fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f/latest", {
         method: "GET"
     })
         .then(r => r.json())
@@ -42,7 +42,7 @@ sendButton.addEventListener("click", () => {
             }
             titles.push(task)
 
-            fetch("https://api.jsonbin.io/b/610505d7046287097ea3e8c2", {
+            fetch("https://api.jsonbin.io/b/6110a49bd5667e403a3c118f", {
                 method: "PUT",
                 headers: {
                     "content-type": "application/json"
