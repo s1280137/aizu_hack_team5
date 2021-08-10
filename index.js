@@ -63,10 +63,12 @@ function update(gender) {
         const likeButton = document.createElement("input")
         likeButton.type = "button"
         likeButton.value = "ZUZU!"
+        likeButton.className = "like_button"
 
         const dislikeButton = document.createElement("input")
         dislikeButton.type = "button"
         dislikeButton.value = "ダメかも..."
+        dislikeButton.className = "dislike_button"
 
         const taskContainer = document.createElement("div")
         taskContainer.className = "taskContainer"
