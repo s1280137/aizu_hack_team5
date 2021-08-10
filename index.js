@@ -1,16 +1,16 @@
 const taskListContainer = document.getElementById("tasks")
 
-const hoge1 = document.getElementById('gender-all')
-const hoge2 = document.getElementById('gender-man')
-const hoge3 = document.getElementById('gender-woman')
+const allGender = document.getElementById('gender-all')
+const man = document.getElementById('gender-man')
+const woman = document.getElementById('gender-woman')
 
-hoge1.addEventListener("click", () => {
+allGender.addEventListener("click", () => {
   fake_update(0)
 })
-hoge2.addEventListener("click", () => {
+man.addEventListener("click", () => {
   fake_update(1)
 })
-hoge3.addEventListener("click", () => {
+woman.addEventListener("click", () => {
   fake_update(2)
 })
 
