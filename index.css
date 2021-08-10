@@ -48,6 +48,55 @@ body {
     font-size: xx-large;
 }
 
+#post_button {
+    cursor:pointer
+}
+
+.like_button {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #FFF;
+    background-image: linear-gradient(45deg, #fa70ff 0%, #ffb0ce 100%);
+    transition: .4s;
+    width: 150px;
+    height: 40px;
+    cursor:pointer
+}
+
+.like_button:hover input {
+    background-image: linear-gradient(45deg, #fa70ff 50%, #ffb0ce 100%);
+    -webkit-transform: rotateX(360deg);
+    transform: rotateX(360deg)
+}
+
+.like_button input {
+    display:inline-block;
+    transition: .5s
+}
+
+.dislike_button {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    border-radius: 3px;
+    font-weight: bold;
+    font-size: 15px;
+    color: #FFF;
+    background-image: linear-gradient(45deg, #709dff 0%, #b0c9ff 100%);
+    transition: .4s;
+    width: 150px;
+    height: 40px;
+    cursor:pointer
+}
+
+.dislike_button:hover {
+    background-image: linear-gradient(45deg, #709dff 50%, #b0c9ff 100%);
+}
+
 .taskContainer {
     text-align: center;
     margin: 16px;
@@ -99,6 +148,7 @@ body {
     border-radius: 100vh;
     font-size: large; 
     padding:5px;
+    cursor:pointer
 }
 
 #gender-man{
@@ -106,6 +156,8 @@ body {
     border-radius: 100vh;
     font-size: large;
     padding:5px;
+    cursor:pointer;
+    color: #0064d8
 }
 
 #gender-woman{
@@ -113,4 +165,6 @@ body {
     border-radius: 100vh;
     font-size: large;
     padding:5px;
+    cursor:pointer;
+    color: #f55b5b
 }
